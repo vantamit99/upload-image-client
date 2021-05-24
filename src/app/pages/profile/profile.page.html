@@ -1,0 +1,32 @@
+<div class="profile">
+    <div class="profile__box">
+        <h1>Cập nhập thông tin cá nhân</h1>
+        <form>
+            <div class="profile__image">
+                <img src="./assets/images/avatar.jpg" alt="">
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Họ</mat-label>
+                    <input matInput type="text" value="Văn" />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Tên</mat-label>
+                    <input matInput type="text" value="Tâm" />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" value="vantam@gmail.com" />
+                </mat-form-field>
+            </div>
+            <div class="btn__update">
+                <button mat-button>Cập nhập</button>
+                <button class="back" mat-button routerLink="/">Quay lại</button>
+            </div>
+        </form>
+    </div>
+</div>

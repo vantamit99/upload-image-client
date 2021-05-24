@@ -1,0 +1,53 @@
+.profile {
+    &__box {
+        @include centerPositionX;    
+        top: 90px;    
+        width: 450px;
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.7);
+        background-color: rgb(241 232 230 / 14%);
+        padding: 30px 40px 30px 40px;
+        & > h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    }
+    &__image {
+        display: flex;
+        justify-content: center;                
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    form {
+        & > div {
+            margin: 10px 0;
+        }
+        .btn__update {
+            text-align: center;
+            margin-top: 30px;            
+            button {
+                background-color: #3458f8;
+                color: #fff;
+                margin: 0 10px;
+            }
+            .back {
+                background-color: #fff;
+                color: #202020;
+                border: 1px solid #202020;
+            }
+        }
+    }
+    input, mat-form-field {
+        width: 100%;
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+<div class="auth auth__register">
+    <ng-container *ngIf="language === 'vn'; else elseLanguage">
+        <h1>Đăng Ký</h1>
+        <div class="auth__form">        
+            <form>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Họ</mat-label>
+                        <input matInput placeholder="Vui lòng nhập họ" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Tên</mat-label>
+                        <input matInput placeholder="Vui lòng nhập tên" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Vui lòng nhập email" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Mật Khẩu</mat-label>
+                        <input matInput type="password" placeholder="Vui lòng nhập mật khẩu" />
+                    </mat-form-field>
+                </div>  
+                <div>
+                    <span>Bạn đã có tài khoản? đăng nhập <a routerLink="/auth/login">tại đây!</a></span>
+                </div>
+                <div class="btn__regis">                
+                    <button mat-raised-button>Đăng Ký</button>                
+                </div>    
+                <div class="btn__backhome">
+                    <button type="button" mat-stroked-button routerLink="/">
+                        <mat-icon>home</mat-icon>
+                    </button>
+                </div>                                      
+            </form>
+        </div>
+    </ng-container>
+    <ng-template #elseLanguage>
+        <h1>Sign Up</h1>
+        <div class="auth__form">        
+            <form>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Last name</mat-label>
+                        <input matInput placeholder="Please enter last name" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>First name</mat-label>
+                        <input matInput placeholder="Please enter first name" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Please enter email" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Please enter password" />
+                    </mat-form-field>
+                </div>  
+                <div>
+                    <span>Do have an account? sign in <a routerLink="/auth/login">here!</a></span>
+                </div>
+                <div class="btn__regis">                
+                    <button mat-raised-button>Sign Up</button>                
+                </div>    
+                <div class="btn__backhome">
+                    <button type="button" mat-stroked-button routerLink="/">
+                        <mat-icon>home</mat-icon>
+                    </button>
+                </div>                                      
+            </form>
+        </div>
+    </ng-template>
+</div>
+

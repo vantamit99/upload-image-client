@@ -1,0 +1,25 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+.topbar {    
+    @include flexJcAi(space-between, center);
+
+    height: 60px;
+    border-bottom: 1px solid #d4d0d0;    
+    padding: 0 15px;
+    box-sizing: border-box;    
+}
+.topbar__logo {
+    @include centerPositionX;
+    img {
+        vertical-align: bottom;
+    }
+}
+.language__active {
+    background-color: $c-blue-29b !important;
+    color: #fff !important;
+}

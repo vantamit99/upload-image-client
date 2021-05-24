@@ -1,0 +1,98 @@
+<header>
+    <ng-container *ngIf="languageCode == 'vn'; else elseLanguage">
+        <div class="topbar">
+            <div>
+                <span>
+                    <span>
+                        <button mat-button [matMenuTriggerFor]="introduce">Giới Thiệu</button>
+                        <mat-menu #introduce="matMenu">
+                            <button mat-menu-item>Điều khoản dịch vụ</button>
+                            <button mat-menu-item>Quyền riêng tư</button>
+                        </mat-menu>
+                    </span>
+                </span>
+                <span>
+                    <span>
+                        <button mat-button [matMenuTriggerFor]="language">Ngôn Ngữ</button>
+                        <mat-menu #language="matMenu">
+                            <button mat-menu-item *ngFor="let lang of arrLanguage" 
+                                [ngClass]="{'language__active': lang.code == languageCode}"
+                                (click)="updateLanguage(lang.code)"
+                            >                         
+                                {{lang.name}}
+                            </button>                     
+                        </mat-menu>
+                    </span>
+                </span>
+            </div>
+            <div class="topbar__logo">
+                <a routerLink="/">
+                    <img src="./assets/images/logo.png" />
+                </a>
+            </div>
+            <div>
+                <span>
+                    <button mat-button>
+                        <mat-icon>upload</mat-icon>
+                        <span>Tải Lên</span>
+                    </button>
+                </span>
+                <span>
+                    <button mat-button routerLink="/auth/login">Đăng Nhập</button>
+                </span>
+                <span>
+                    <button mat-button routerLink="/auth/register">Đăng Ký</button>
+                </span>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- === content english -->
+    <ng-template #elseLanguage>
+        <div class="topbar">
+            <div>
+                <span>
+                    <span>
+                        <button mat-button [matMenuTriggerFor]="introduce">ABOUT</button>
+                        <mat-menu #introduce="matMenu">
+                            <button mat-menu-item>Terms of service</button>
+                            <button mat-menu-item>Privacy</button>
+                        </mat-menu>
+                    </span>
+                </span>
+                <span>
+                    <span>
+                        <button mat-button [matMenuTriggerFor]="language">Language</button>
+                        <mat-menu #language="matMenu">
+                            <button mat-menu-item *ngFor="let lang of arrLanguage" 
+                                [ngClass]="{'language__active': lang.code == languageCode}"
+                                (click)="updateLanguage(lang.code)"
+                            >                         
+                                {{lang.name}}
+                            </button>                     
+                        </mat-menu>
+                    </span>
+                </span>
+            </div>
+            <div class="topbar__logo">
+                <a routerLink="/">
+                    <img src="./assets/images/logo.png" />
+                </a>
+            </div>
+            <div>
+                <span>
+                    <button mat-button>
+                        <mat-icon>upload</mat-icon>
+                        <span>Upload</span>
+                    </button>
+                </span>
+                <span>
+                    <button mat-button routerLink="/auth/login">Sign In</button>
+                </span>
+                <span>
+                    <button mat-button routerLink="/auth/register">Sign Up</button>
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</header>

@@ -1,0 +1,29 @@
+<div class="home">
+    <canvas></canvas>
+    <ng-container *ngIf="language === 'vn'; else elseLanguage">
+        <div class="home__content">
+            <div>
+                <h1>Đăng và chia sẽ những bức ảnh của bạn.</h1>
+            </div>
+            <div>
+                <p>Bắt đầu tải ảnh của bạn ngây bây giờ. Giới hạn tối đa là 32 MB.</p>
+            </div>
+            <div>
+                <button mat-button>Bắt đầu tải ảnh lên</button> 
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseLanguage>
+        <div class="home__content">
+            <div>
+                <h1>Upload and share your images.</h1>
+            </div>
+            <div>
+                <p>Start uploading your images now. 32 MB limit.</p>
+            </div>
+            <div>
+                <button mat-button>Start uploading</button> 
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,57 @@
+<div class="manager">
+    <div class="bg__cover">
+        <img src="./assets/images/bg-cover.jpg" />
+        <button class="bg__cover--change" mat-button>
+            <mat-icon>camera_enhance</mat-icon>
+            <span>Đổi hình nền</span>
+        </button>
+    </div>
+    <div class="manager__info">
+        <div class="manager__info--item manager__info--left">
+            <div>
+                <div class="avatar">
+                    <a href="javascript:void(0)">
+                        <img src="./assets/images/test.jpg" alt="">
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="info__username">VanTam</div>
+                    <div class="info__edit">
+                        <a routerLink="/profile"><mat-icon>edit</mat-icon>Sửa</a>                                                                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="manager__info--item manager__info--right">
+            <div class="statistical">
+                <span>0 Ảnh</span> <span class="cross"></span> <span>0 Album</span>            
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search..." />
+                <mat-icon>search</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div class="manager__image">
+        <div>
+            <ol class="actions__list">
+                <li>
+                    <a class="name__me" href="javascript:void(0)">Ảnh của VanTam</a>
+                </li>
+                <li class="actions__item active">
+                    <a href="javascript:void(0)">Tất cả</a>
+                </li>
+                <li class="actions__item">
+                    <a href="javascript:void(0)">Gần đây nhất</a>
+                </li>
+                <li class="actions__item">
+                    <a href="javascript:void(0)">Yêu thích nhất</a>
+                </li>
+            </ol>
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
