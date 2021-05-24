@@ -14,12 +14,12 @@ export class ApiService {
     return this.http.get(URL.merge(environment.API_URL, endpoint));
   }
 
-  post(endpoint: string, data: any = {}, option: any = null) {
+  post(endpoint: string, data: any = {}, options: any = null) {
     let httpOptions = {};
-    if(!option && option.type != 'multipart/formdata') {
+    if(!options || options.type != 'multipart/formdata') {
       httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type': (option && option.type) ? option.type : 'application/json'
+          'Content-Type': (options && options.type) ? options.type : 'application/json'
         })
       }
     } else {
@@ -30,12 +30,12 @@ export class ApiService {
     return this.http.post(URL.merge(environment.API_URL, endpoint), data, httpOptions);
   }
 
-  put(endpoint: string, id: number, data: any = {}, option: any = null) {
+  put(endpoint: string, id: number, data: any = {}, options: any = null) {
     let httpOptions = {};
-    if(!option && option.type != 'multipart/formdata') {
+    if(!options || options.type != 'multipart/formdata') {
       httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type': (option && option.type) ? option.type : 'application/json'
+          'Content-Type': (options && options.type) ? options.type : 'application/json'
         })
       }
     } else {
@@ -43,26 +43,10 @@ export class ApiService {
         headers: new HttpHeaders({})          
       }
     }
-    return this.http.put(URL.merge(environment.API_URL, endpoint, id), data, httpOptions);
-  }
-
-  patch(endpoint: string, id: number, data: any = {}, option: any = null) {
-    let httpOptions = {};
-    if(!option && option.type != 'multipart/formdata') {
-      httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': (option && option.type) ? option.type : 'application/json'
-        })
-      }
-    } else {
-      httpOptions = {
-        headers: new HttpHeaders({})          
-      }
-    }
-    return this.http.patch(URL.merge(environment.API_URL, endpoint, id), data, httpOptions);
+    return this.http.put(URL.merge(environment.API_URL, endpoint, URL.query(id)), data, httpOptions);
   }
 
   delete(endpoint: string, id: number) {
-    return this.http.delete(URL.merge(environment.API_URL, endpoint, id));
+    return this.http.delete(URL.merge(environment.API_URL, endpoint, URL.query(id)));
   }
 }

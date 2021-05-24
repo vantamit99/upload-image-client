@@ -6,14 +6,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UploadDialog } from './dialogs/upload/upload.dialog';
+import { AlertDialog } from './dialogs/alert/alert.dialog';
 
 
 @NgModule({
   declarations: [
-    UploadDialog
+    UploadDialog,
+    AlertDialog,   
   ],
   imports: [
     CommonModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -25,7 +28,8 @@ import { UploadDialog } from './dialogs/upload/upload.dialog';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    UploadDialog
+    UploadDialog,
+    AlertDialog,
   ]
 })
 export class SharedModule { }
