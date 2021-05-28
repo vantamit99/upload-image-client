@@ -1,0 +1,54 @@
+.upload__dialog {
+    * {
+        font-size: 18px;
+    }
+    .dialog__actions {
+        &--close {
+            padding: 0;
+            margin-bottom: 0;
+            min-height: 40px;
+        }
+        &--upload {
+            padding-bottom: 20px;
+            button {
+                font-size: 25px;
+                background-color: #0b830b;
+                color: #fff;
+            }
+        }
+    }   
+    mat-dialog-actions mat-icon {
+        font-size: 20px;       
+    }
+    mat-dialog-content {
+        overflow: unset;
+        text-align: center;        
+        p {
+            text-align: left;
+            color: #918b8b;
+        }
+    }  
+    .upload {
+        margin: 20px 0;
+        &__input {
+            display: none;
+        }
+        &__label {
+            cursor: pointer;
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: contain;
+            }
+        }
+    }
+}
+#result-upload {
+    display: none;
+    width: 100%;
+    margin: 30px 0 10px 0;
+    height: 40px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    outline: none;
+}

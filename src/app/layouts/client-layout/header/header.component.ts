@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { language } from 'src/app/core/interfaces/language';
 import { LanguageService } from 'src/app/shared/services/language.service';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { User } from 'src/app/core/models/user';
+import { UploadDialog } from 'src/app/shared/dialogs/upload/upload.dialog';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +27,12 @@ export class HeaderComponent implements OnInit {
   ];
   languageCode: string;
 
-  constructor(private languageService: LanguageService, private authService: AuthService) { }
+  constructor(
+    private languageService: LanguageService,
+    private authService: AuthService,
+    public dialog: MatDialog,  
+    
+  ) { }
 
   ngOnInit(): void {   
     if(this.authService.isAuthenticated()) {
@@ -47,5 +54,11 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  onOpenUpload() {    
+    this.dialog.open(UploadDialog, {
+      minWidth: 800
+    })
   }
 }

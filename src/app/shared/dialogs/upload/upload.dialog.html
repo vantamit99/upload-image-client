@@ -1,1 +1,26 @@
-<p>upload works!</p>
+<div class="upload__dialog">
+    <h2 mat-dialog-title>
+        <mat-dialog-actions class="dialog__actions--close" align="end">
+            <button mat-icon-button mat-dialog-close>
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </h2>
+    <mat-dialog-content>
+        <p>Chấp nhận png jpg jpeg 32MB</p>
+        <div class="upload">
+            <input id="upload-file" class="upload__input" type="file" accept=".jpg, .png, .jpeg" (change)="onChangeImage($event)">
+            <label for="upload-file" class="upload__label">
+                <img id="upload-image" src="./assets/images/upload.png" alt="">
+            </label>
+        </div>
+        <div><small>Bạn có thể tải ảnh lên từ máy tính để upload</small></div>
+        <div>
+            <input id="result-upload" type="text">
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog__actions--upload" align="center">
+        <button mat-flat-button (click)="onUpload()" [disabled]="!isChangeImage">Tải lên</button>            
+    </mat-dialog-actions>
+</div>
+

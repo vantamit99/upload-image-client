@@ -1,6 +1,6 @@
-<div class="manager">
+<div class="manager" *ngIf="arrListUpload && profile">
     <div class="bg__cover">
-        <img src="./assets/images/bg-cover.jpg" />
+        <img src="https://picsum.photos/1900/450" />
         <button class="bg__cover--change" mat-button>
             <mat-icon>camera_enhance</mat-icon>
             <span>Đổi hình nền</span>
@@ -11,11 +11,11 @@
             <div>
                 <div class="avatar">
                     <a href="javascript:void(0)">
-                        <img src="./assets/images/test.jpg" alt="">
+                        <img [src]="profile.image" alt="">
                     </a>
                 </div>
                 <div class="info">
-                    <div class="info__username">VanTam</div>
+                    <div class="info__username">{{profile.fullname()}}</div>
                     <div class="info__edit">
                         <a routerLink="/profile"><mat-icon>edit</mat-icon>Sửa</a>                                                                        
                     </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="manager__info--item manager__info--right">
             <div class="statistical">
-                <span>0 Ảnh</span> <span class="cross"></span> <span>0 Album</span>            
+                <span>{{arrListUpload.length}} Ảnh</span> <span class="cross"></span> <span>0 Album</span>            
             </div>
             <div class="search">
                 <input type="text" placeholder="Search..." />
@@ -36,21 +36,24 @@
         <div>
             <ol class="actions__list">
                 <li>
-                    <a class="name__me" href="javascript:void(0)">Ảnh của VanTam</a>
+                    <a class="name__me" href="javascript:void(0)">Ảnh của {{profile.fullname()}}</a>
                 </li>
                 <li class="actions__item active">
-                    <a href="javascript:void(0)">Tất cả</a>
+                    <a routerLink="/manager" [queryParams]="{album: 'all'}">Tất cả</a>
                 </li>
                 <li class="actions__item">
-                    <a href="javascript:void(0)">Gần đây nhất</a>
+                    <a routerLink="/manager" [queryParams]="{sort: 'recent'}">Gần đây nhất</a>
                 </li>
                 <li class="actions__item">
-                    <a href="javascript:void(0)">Yêu thích nhất</a>
+                    <a routerLink="/manager" [queryParams]="{sort: 'like'}">Yêu thích nhất</a>
                 </li>
             </ol>
         </div>
-        <div>
-            <router-outlet></router-outlet>
+        <div class="list__albums">
+            <div class="item" *ngFor="let album of arrListUpload">
+                <img [src]="album._upload.image" alt="">
+                <div></div>
+            </div>
         </div>
     </div>
 </div>

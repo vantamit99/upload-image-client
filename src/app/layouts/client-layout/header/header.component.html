@@ -32,7 +32,7 @@
             </div>
             <div>
                 <span>
-                    <button mat-button>
+                    <button mat-button (click)="onOpenUpload()">
                         <mat-icon>upload</mat-icon>
                         <span>Tải Lên</span>
                     </button>
@@ -52,8 +52,8 @@
                         <span>                        
                             <button mat-button [matMenuTriggerFor]="menu">{{profile.fullname()}}</button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item>Quản lý ảnh</button>        
-                                <button mat-menu-item>Thông tin cá nhân</button>        
+                                <button mat-menu-item routerLink="/manager">Quản lý ảnh</button>        
+                                <button mat-menu-item routerLink="/profile">Thông tin cá nhân</button>        
                                 <button mat-menu-item (click)="onLogout()">Đăng xuất</button>                        
                             </mat-menu>
                         </span>
@@ -97,7 +97,7 @@
             </div>
             <div>
                 <span>
-                    <button mat-button>
+                    <button mat-button (click)="onOpenUpload()">
                         <mat-icon>upload</mat-icon>
                         <span>Upload</span>
                     </button>
@@ -117,8 +117,8 @@
                         <span>                        
                             <button mat-button [matMenuTriggerFor]="menu">{{profile.fullname()}}</button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item>Manager Album</button>        
-                                <button mat-menu-item>Infomation Personal</button>        
+                                <button mat-menu-item routerLink="/manager">Manager Album</button>        
+                                <button mat-menu-item routerLink="/profile">Infomation Personal</button>        
                                 <button mat-menu-item (click)="onLogout()">Logout</button>                        
                             </mat-menu>
                         </span>

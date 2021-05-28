@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ManagerPage } from '../../pages/manager/manager.page';
+import { ManagerAlbumComponent } from '../../pages/manager/manager-album/manager-album.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ManagerPage
+    component: ManagerPage,    
   }
 ]
 

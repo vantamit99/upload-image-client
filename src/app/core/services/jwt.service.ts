@@ -22,7 +22,7 @@ export class JwtService {
   setToken(data) {
     this.access_token = data.access_token;
     this.token_type = data.token_type;
-    this.expires_in = data.expires_in || 10;
+    this.expires_in = data.expires_in || 200;
     COOKIE.set(environment.cookieKeys.token, this.access_token, this.expires_in);
     COOKIE.set(environment.cookieKeys.type, this.token_type, this.expires_in);
   }  

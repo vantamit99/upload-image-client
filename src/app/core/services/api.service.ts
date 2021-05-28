@@ -16,7 +16,7 @@ export class ApiService {
 
   post(endpoint: string, data: any = {}, options: any = null) {
     let httpOptions = {};
-    if(!options || options.type != 'multipart/formdata') {
+    if(!options || options.type != 'multipart/form-data') {
       httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': (options && options.type) ? options.type : 'application/json'
@@ -32,7 +32,7 @@ export class ApiService {
 
   put(endpoint: string, id: number, data: any = {}, options: any = null) {
     let httpOptions = {};
-    if(!options || options.type != 'multipart/formdata') {
+    if(!options || options.type != 'multipart/form-data') {
       httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': (options && options.type) ? options.type : 'application/json'

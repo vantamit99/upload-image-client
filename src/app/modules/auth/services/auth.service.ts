@@ -51,7 +51,7 @@ export class AuthService {
       map((res: any) => {
         this.currentUser = new User(res.data);  
         this.profile$.next(this.currentUser);
-        console.log(this.currentUser);     
+        //console.log(this.currentUser);     
         return res.data;
       })
     )
