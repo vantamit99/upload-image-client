@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';  
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LanguageService } from 'src/app/shared/services/language.service';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
@@ -20,10 +21,11 @@ export class RegisterPage implements OnInit {
     private fb: FormBuilder,
     private languageService: LanguageService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,    
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.languageService.language$.subscribe(res => {
       this.language = res;
     });
@@ -38,7 +40,17 @@ export class RegisterPage implements OnInit {
   onRegister() {
     this.authService.register(this.formRegister.value).subscribe(
       res => {
-
+        console.log(res);
+        let dialogData = this.dialog.open(AlertDialog, {
+          data: {
+            title: 'Successfully',
+            content: 'Account successfully created!'
+          },
+          minWidth: 450
+        });
+        dialogData.afterClosed().subscribe(res => {
+          this.router.navigateByUrl('/auth/login')
+        })
       },
       err => {
         this.dialog.open(AlertDialog, {

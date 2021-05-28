@@ -2,24 +2,24 @@
     <ng-container *ngIf="language === 'vn'; else elseLanguage">
         <h1>Đăng Nhập</h1>
         <div class="auth__form">        
-            <form>           
+            <form [formGroup]="formLogin" (ngSubmit)="onLogin()">           
                 <div>
                     <mat-form-field>
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Vui lòng nhập email" />
+                        <input matInput placeholder="Vui lòng nhập email" formControlName="email" />
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field>
                         <mat-label>Mật Khẩu</mat-label>
-                        <input matInput type="password" placeholder="Vui lòng nhập mật khẩu" />
+                        <input matInput type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" />
                     </mat-form-field>
                 </div>  
                 <div>
                     <span>Bạn chưa có tài khoản? đăng ký <a routerLink="/auth/register">tại đây!</a></span>
                 </div>
                 <div class="btn__login">                
-                    <button mat-raised-button>Đăng Nhập</button>                
+                    <button mat-raised-button (ngSubmit)="onLogin()">Đăng Nhập</button>                
                 </div>    
                 <div class="btn__backhome">
                     <button type="button" mat-stroked-button routerLink="/">

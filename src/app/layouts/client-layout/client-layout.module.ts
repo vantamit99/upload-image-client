@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ClientLayoutComponent } from './client-layout.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from 'src/app/modules/auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,11 +19,13 @@ const routes: Routes = [
       },
       {
         path: 'manager',
-        loadChildren: () => import(`../../modules/manager/manager.module`).then(m => m.ManagerModule)
+        loadChildren: () => import(`../../modules/manager/manager.module`).then(m => m.ManagerModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'profile',
-        loadChildren: () => import(`../../modules/profile/profile.module`).then(m => m.ProfileModule)
+        loadChildren: () => import(`../../modules/profile/profile.module`).then(m => m.ProfileModule),
+        canActivate: [AuthGuard]
       }
     ]
   }
