@@ -4,8 +4,9 @@ export enum AUTH_ENDPOINT {
     PROFILE = "api/auth/profile"
 }
 export enum UPLOAD_ENDPOINT {
-    UPLOAD = "api/upload"
+    UPLOAD = "api/upload",
+    UPLOAD_UPDATE = "api/upload/update",    
 }
 export enum USER_ENDPOINT {
-    MANAGER = "api/user/manager"
+    MANAGER = "api/user/manager",   
 }

@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ClientLayoutComponent } from './client-layout.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from 'src/app/modules/auth/guards/auth.guard';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ClientLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule, 

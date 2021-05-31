@@ -1,32 +1,76 @@
-<div class="profile">
-    <div class="profile__box">
+<div class="profile" *ngIf="profile">
+    <div class="profile__box" *ngIf="language == 'vn'; else elseLanguage">
         <h1>Cập nhập thông tin cá nhân</h1>
-        <form>
+        <form [formGroup]="formUpdate" (ngSubmit)="onUpdate()">
             <div class="profile__image">
-                <img src="./assets/images/avatar.jpg" alt="">
+                <div class="upload">
+                    <input class="upload__input" type="file" id="upload-file" (change)="onChangeImage($event)">
+                    <label class="upload__label" for="upload-file">
+                        <img id="upload-image" [src]="profile.image" alt="">
+                    </label>
+                </div>
             </div>
             <div>
                 <mat-form-field>
                     <mat-label>Họ</mat-label>
-                    <input matInput type="text" value="Văn" />
+                    <input matInput type="text" formControlName="lastname" />
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field>
                     <mat-label>Tên</mat-label>
-                    <input matInput type="text" value="Tâm" />
+                    <input matInput type="text" formControlName="firstname" />
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input matInput type="email" value="vantam@gmail.com" />
+                    <input matInput type="email" formControlName="email" />
                 </mat-form-field>
             </div>
             <div class="btn__update">
-                <button mat-button>Cập nhập</button>
-                <button class="back" mat-button routerLink="/">Quay lại</button>
+                <button mat-button (ngSubmit)="onUpdate()">Cập nhập</button>
+                <button class="back" mat-button routerLink="/manager">Quay lại</button>
             </div>
-        </form>
+        </form>        
     </div>
+    <!-- ====================================================================== -->
+    <ng-template #elseLanguage>
+        <div class="profile__box">
+            <h1>Update Personal Information</h1>
+            <form [formGroup]="formUpdate" (ngSubmit)="onUpdate()">
+                <div class="profile__image">
+                    <div class="upload">
+                        <input class="upload__input" type="file" id="upload-file" (change)="onChangeImage($event)">
+                        <label class="upload__label" for="upload-file">
+                            <img id="upload-image" [src]="profile.image" alt="">
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Lastname</mat-label>
+                        <input matInput type="text" formControlName="lastname" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Firstname</mat-label>
+                        <input matInput type="text" formControlName="firstname" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email" />
+                    </mat-form-field>
+                </div>
+                <div class="btn__update">
+                    <button mat-button (ngSubmit)="onUpdate()">Updated</button>
+                    <button class="back" mat-button routerLink="/manager">Back</button>
+                </div>
+            </form>      
+        </div>  
+    </ng-template>
 </div>
+

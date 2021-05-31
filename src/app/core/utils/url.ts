@@ -1,6 +1,6 @@
 export function query(q: any) {
     if(q) {
-        if(typeof q == 'number') {
+        if(typeof q == 'number' || 'string') {
             return `/${q}`;
         } else {
             // {id: 1, name: 'abc'} => ?id=1&name=abc

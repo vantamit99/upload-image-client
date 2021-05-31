@@ -27,19 +27,19 @@
             text-align: left;
             color: #918b8b;
         }
-    }  
-    .upload {
-        margin: 20px 0;
-        &__input {
-            display: none;
-        }
-        &__label {
-            cursor: pointer;
-            img {
-                width: 150px;
-                height: 150px;
-                object-fit: contain;
-            }
+    }      
+}
+.upload {
+    margin: 10px 0;
+    &__input {
+        display: none;
+    }
+    &__label {
+        cursor: pointer;
+        img {
+            width: 150px;
+            height: 120px;
+            object-fit: contain;
         }
     }
 }
@@ -51,4 +51,17 @@
     padding: 5px 15px;
     box-sizing: border-box;
     outline: none;
+}
+#loading-upload {
+    display: none;
+    mat-spinner {
+        margin: 0 auto;
+    }
+    mat-spinner, svg {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    &.active {
+        display: block;
+    }
 }

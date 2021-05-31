@@ -5,14 +5,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UploadDialog } from './dialogs/upload/upload.dialog';
 import { AlertDialog } from './dialogs/alert/alert.dialog';
+import { SpinnerDialog } from './dialogs/spinner/spinner.dialog';
+import { ConfirmDialog } from './dialogs/confirm/confirm.dialog';
 
 
 @NgModule({
   declarations: [
     UploadDialog,
-    AlertDialog,   
+    AlertDialog,
+    SpinnerDialog,
+    ConfirmDialog,  
   ],
   imports: [
     CommonModule,
@@ -21,6 +26,7 @@ import { AlertDialog } from './dialogs/alert/alert.dialog';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatDialogModule,
@@ -30,6 +36,8 @@ import { AlertDialog } from './dialogs/alert/alert.dialog';
     MatIconModule,
     UploadDialog,
     AlertDialog,
+    SpinnerDialog,
+    ConfirmDialog
   ]
 })
 export class SharedModule { }

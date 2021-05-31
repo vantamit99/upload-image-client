@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} domId 
+ * @param {*} file 
+ */
 export const changeImage = (domId, file) => {
     let ele = document.getElementById(domId);
     let fileReader = new FileReader();

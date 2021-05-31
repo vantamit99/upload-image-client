@@ -30,8 +30,10 @@ export class UploadDialog implements OnInit {
   }
 
   onUpload() {
+    let loading = document.getElementById('loading-upload');    
     let formData = new FormData();
     formData.append('file', this.selectedFile);
+    loading.classList.add('active');
     
     if(this.authService.isAuthenticated()) {     
       this.uploadService.uploadLogin(formData).subscribe((res: Upload) => { 
@@ -39,8 +41,8 @@ export class UploadDialog implements OnInit {
         let url = res.image;
         let resultUpload = document.getElementById('result-upload') as HTMLInputElement;
         resultUpload.value = url;
-        resultUpload.style.display = 'block';
-        
+        loading.classList.remove('active');
+        resultUpload.style.display = 'block';        
       })
     } else {
       formData.append('upload_preset', environment.CLOUNDINARY_UPLOAD_PRESET);    
@@ -49,6 +51,7 @@ export class UploadDialog implements OnInit {
           let url = res.url;
           let resultUpload = document.getElementById('result-upload') as HTMLInputElement;
           resultUpload.value = url;
+          loading.classList.remove('active');
           resultUpload.style.display = 'block';
         }
       );

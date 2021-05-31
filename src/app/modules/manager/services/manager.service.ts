@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
-import { USER_ENDPOINT } from 'src/app/core/enums/endpoints.enum';
+import { UPLOAD_ENDPOINT, USER_ENDPOINT } from 'src/app/core/enums/endpoints.enum';
 import { map } from 'rxjs/operators';
 import { ListUpload } from 'src/app/core/models/list-upload';
 import { Observable } from 'rxjs';
@@ -18,6 +18,20 @@ export class ManagerService {
       map((res: any) => {
         this.arrListUpload = res.data.list_upload.map(upload => new ListUpload(upload));
         return this.arrListUpload;
+      })
+    )
+  }
+  like(id) {  
+    return this.apiService.post(UPLOAD_ENDPOINT.UPLOAD_UPDATE, {id: id}).pipe(
+      map((res: any) => {        
+        return res.data.listUpload;
+      })
+    )
+  }
+  delete(id) {
+    return this.apiService.delete(UPLOAD_ENDPOINT.UPLOAD, id).pipe(
+      map(res => {
+        return res;
       })
     )
   }

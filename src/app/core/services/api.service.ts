@@ -14,7 +14,7 @@ export class ApiService {
     return this.http.get(URL.merge(environment.API_URL, endpoint));
   }
 
-  post(endpoint: string, data: any = {}, options: any = null) {
+  post(endpoint: string, data: any = {}, options: any = null) {   
     let httpOptions = {};
     if(!options || options.type != 'multipart/form-data') {
       httpOptions = {
@@ -26,7 +26,7 @@ export class ApiService {
       httpOptions = {
         headers: new HttpHeaders({})          
       }
-    }
+    }  
     return this.http.post(URL.merge(environment.API_URL, endpoint), data, httpOptions);
   }
 
@@ -44,6 +44,22 @@ export class ApiService {
       }
     }
     return this.http.put(URL.merge(environment.API_URL, endpoint, URL.query(id)), data, httpOptions);
+  }
+
+  patch(endpoint: string, id: number, data: any = {}, options: any = null) {    
+    let httpOptions = {};
+    if(!options || options.type != 'multipart/form-data') {
+      httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': (options && options.type) ? options.type : 'application/json'
+        })
+      }
+    } else {
+      httpOptions = {
+        headers: new HttpHeaders({})          
+      }
+    }
+    return this.http.patch(URL.merge(environment.API_URL, endpoint, URL.query(id)), data, httpOptions);
   }
 
   delete(endpoint: string, id: number) {

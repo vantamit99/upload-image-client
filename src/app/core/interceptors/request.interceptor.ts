@@ -15,6 +15,7 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor(private jwtService: JwtService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+   
     if(this.jwtService.getToken()) {
       if(request.headers.has('content-type')) {
         request = request.clone({
@@ -24,10 +25,10 @@ export class RequestInterceptor implements HttpInterceptor {
             "Accept": 'application/json'
           })
         })
-      } else {
+      } else {       
         request = request.clone({
           headers: new HttpHeaders({            
-            "Authorization": this.jwtService.getToken()
+            "Authorization": this.jwtService.getToken(),           
           })
         })
       }

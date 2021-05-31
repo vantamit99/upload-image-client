@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
+import { Router } from '@angular/router';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { AUTH_ENDPOINT } from 'src/app/core/enums/endpoints.enum';
 import { map } from 'rxjs/operators';
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService, 
-    private jwtService: JwtService,  
+    private jwtService: JwtService, 
+    private router: Router 
   ) { }
 
   register(formData) {
@@ -44,6 +46,7 @@ export class AuthService {
     this.jwtService.removeToken();
     this.currentUser = null;
     this.profile$.next(this.currentUser);    
+    this.router.navigateByUrl('/')
   }
 
   getProfile() {

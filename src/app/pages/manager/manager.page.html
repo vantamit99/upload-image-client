@@ -1,60 +1,168 @@
-<div class="manager" *ngIf="arrListUpload && profile">
-    <div class="bg__cover">
-        <img src="https://picsum.photos/1900/450" />
-        <button class="bg__cover--change" mat-button>
-            <mat-icon>camera_enhance</mat-icon>
-            <span>Đổi hình nền</span>
-        </button>
-    </div>
-    <div class="manager__info">
-        <div class="manager__info--item manager__info--left">
-            <div>
-                <div class="avatar">
-                    <a href="javascript:void(0)">
-                        <img [src]="profile.image" alt="">
-                    </a>
-                </div>
-                <div class="info">
-                    <div class="info__username">{{profile.fullname()}}</div>
-                    <div class="info__edit">
-                        <a routerLink="/profile"><mat-icon>edit</mat-icon>Sửa</a>                                                                        
+<div class="manager" *ngIf="arrListUpload && profile ">
+    <div *ngIf="language == 'vn'; else elseLanguage">
+        <div class="bg__cover">
+            <!-- <img src="https://picsum.photos/1900/450" /> -->
+            <video controls>
+                <source src="./assets/images/19.mp4" type="video/mp4" />
+            </video>
+            <button class="bg__cover--change" mat-button>
+                <mat-icon>camera_enhance</mat-icon>
+                <span>Đổi hình nền</span>
+            </button>
+        </div>
+        <div class="manager__info">
+            <div class="manager__info--item manager__info--left">
+                <div>
+                    <div class="avatar">
+                        <a href="javascript:void(0)">
+                            <img [src]="profile.image" alt="">
+                        </a>
+                    </div>
+                    <div class="info">
+                        <div class="info__username">{{profile.fullname()}}</div>
+                        <div class="info__edit">
+                            <a routerLink="/profile"><mat-icon>edit</mat-icon>Sửa</a>                                                                        
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="manager__info--item manager__info--right">
-            <div class="statistical">
-                <span>{{arrListUpload.length}} Ảnh</span> <span class="cross"></span> <span>0 Album</span>            
+            <div class="manager__info--item manager__info--right">
+                <div class="statistical">
+                    <span>{{arrListUpload.length}} Ảnh</span> <span class="cross"></span> <span>0 Bộ sưu tập</span>            
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Tìm kiếm..." />
+                    <mat-icon>search</mat-icon>
+                </div>
             </div>
-            <div class="search">
-                <input type="text" placeholder="Search..." />
-                <mat-icon>search</mat-icon>
+        </div>
+        <div class="manager__image">
+            <div>
+                <ol class="actions__list">                
+                    <li>
+                        <a class="name__me" href="javascript:void(0)">Ảnh của {{profile.fullname()}}</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.album ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{album: 'all'}">Tất cả</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.sort && query.sort == 'recent' ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{sort: 'recent'}">Gần đây nhất</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.sort && query.sort == 'like' ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{sort: 'like'}">Yêu thích nhất</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="container" *ngIf="arrListUpload.length > 0">
+                <div class="list__albums">
+                    <div class="item" *ngFor="let album of arrListUpload">
+                        <img [src]="album._upload.image" alt="">
+                        <div class="actions">
+                            <div class="actions__item actions__item--favorite">
+                                <button mat-icon-button (click)="onLike(album.id)">
+                                    <mat-icon [ngClass]="{'isLike__active': album._upload.isLike}">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <div class="actions__item actions__item--delete">
+                                <button mat-icon-button (click)="onDelete(album.id)">
+                                    <mat-icon>delete_outline</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <mat-paginator [length]="arrListUploadCopy.length"
+                        [pageSize]="10"
+                        [pageSizeOptions]="[10]"
+                        (page)="onChangePagination($event)">
+                    </mat-paginator>
+                </div>
             </div>
         </div>
     </div>
-    <div class="manager__image">
-        <div>
-            <ol class="actions__list">
-                <li>
-                    <a class="name__me" href="javascript:void(0)">Ảnh của {{profile.fullname()}}</a>
-                </li>
-                <li class="actions__item active">
-                    <a routerLink="/manager" [queryParams]="{album: 'all'}">Tất cả</a>
-                </li>
-                <li class="actions__item">
-                    <a routerLink="/manager" [queryParams]="{sort: 'recent'}">Gần đây nhất</a>
-                </li>
-                <li class="actions__item">
-                    <a routerLink="/manager" [queryParams]="{sort: 'like'}">Yêu thích nhất</a>
-                </li>
-            </ol>
+    <!-- ================================================================================== -->
+    <ng-template #elseLanguage>
+        <div class="bg__cover">
+            <!-- <img src="https://picsum.photos/1900/450" /> -->
+            <video controls>
+                <source src="./assets/images/19.mp4" type="video/mp4" />
+            </video>
+            <button class="bg__cover--change" mat-button>
+                <mat-icon>camera_enhance</mat-icon>
+                <span>Change background</span>
+            </button>
         </div>
-        <div class="list__albums">
-            <div class="item" *ngFor="let album of arrListUpload">
-                <img [src]="album._upload.image" alt="">
-                <div></div>
+        <div class="manager__info">
+            <div class="manager__info--item manager__info--left">
+                <div>
+                    <div class="avatar">
+                        <a href="javascript:void(0)">
+                            <img [src]="profile.image" alt="">
+                        </a>
+                    </div>
+                    <div class="info">
+                        <div class="info__username">{{profile.fullname()}}</div>
+                        <div class="info__edit">
+                            <a routerLink="/profile"><mat-icon>edit</mat-icon>Edit</a>                                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manager__info--item manager__info--right">
+                <div class="statistical">
+                    <span>{{arrListUpload.length}} Photos</span> <span class="cross"></span> <span>0 Album</span>            
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Search..." />
+                    <mat-icon>search</mat-icon>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="manager__image">
+            <div>
+                <ol class="actions__list">                
+                    <li>
+                        <a class="name__me" href="javascript:void(0)">{{profile.fullname()}}'s photo</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.album ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{album: 'all'}">All</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.sort && query.sort == 'recent' ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{sort: 'recent'}">Recent</a>
+                    </li>
+                    <li class="actions__item" [ngClass]="query.sort && query.sort == 'like' ? 'active' : ''">
+                        <a routerLink="/manager" [queryParams]="{sort: 'like'}">Favorite</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="container" *ngIf="arrListUpload.length > 0">
+                <div class="list__albums">
+                    <div class="item" *ngFor="let album of arrListUpload">
+                        <img [src]="album._upload.image" alt="">
+                        <div class="actions">
+                            <div class="actions__item actions__item--favorite">
+                                <button mat-icon-button (click)="onLike(album.id)">
+                                    <mat-icon [ngClass]="{'isLike__active': album._upload.isLike}">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <div class="actions__item actions__item--delete">
+                                <button mat-icon-button (click)="onDelete(album.id)">
+                                    <mat-icon>delete_outline</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <mat-paginator [length]="arrListUploadCopy.length"
+                        [pageSize]="10"
+                        [pageSizeOptions]="[10]"
+                        (page)="onChangePagination($event)">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>
 
