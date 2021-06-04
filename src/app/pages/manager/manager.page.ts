@@ -74,10 +74,10 @@ export class ManagerPage implements OnInit {
     return arrNew;
   }
 
-  onChangePagination(e) {   
-    let start = e.pageIndex * 10 + 1;
-    let end = start + 9;
-    this.arrListUpload = this.showImageMaximum(this.arrListUploadCopy, start - 1, end);  
+  onChangePagination(e) {      
+    let start = e.pageIndex * e.pageSize;
+    let end = start + e.pageSize;
+    this.arrListUpload = this.showImageMaximum(this.arrListUploadCopy, start, end);  
   }
 
   onLike(id) {

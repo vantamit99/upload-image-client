@@ -1,10 +1,10 @@
 <div class="manager" *ngIf="arrListUpload && profile ">
     <div *ngIf="language == 'vn'; else elseLanguage">
         <div class="bg__cover">
-            <!-- <img src="https://picsum.photos/1900/450" /> -->
-            <video controls>
+            <img src="https://picsum.photos/1900/450" />
+            <!-- <video controls>
                 <source src="./assets/images/19.mp4" type="video/mp4" />
-            </video>
+            </video> -->
             <button class="bg__cover--change" mat-button>
                 <mat-icon>camera_enhance</mat-icon>
                 <span>Đổi hình nền</span>
@@ -74,7 +74,7 @@
                 <div class="pagination">
                     <mat-paginator [length]="arrListUploadCopy.length"
                         [pageSize]="10"
-                        [pageSizeOptions]="[10]"
+                        [pageSizeOptions]="[5, 10, 15]"
                         (page)="onChangePagination($event)">
                     </mat-paginator>
                 </div>
@@ -84,10 +84,10 @@
     <!-- ================================================================================== -->
     <ng-template #elseLanguage>
         <div class="bg__cover">
-            <!-- <img src="https://picsum.photos/1900/450" /> -->
-            <video controls>
+            <img src="https://picsum.photos/1900/450" />
+            <!-- <video controls>
                 <source src="./assets/images/19.mp4" type="video/mp4" />
-            </video>
+            </video> -->
             <button class="bg__cover--change" mat-button>
                 <mat-icon>camera_enhance</mat-icon>
                 <span>Change background</span>
@@ -157,7 +157,7 @@
                 <div class="pagination">
                     <mat-paginator [length]="arrListUploadCopy.length"
                         [pageSize]="10"
-                        [pageSizeOptions]="[10]"
+                        [pageSizeOptions]="[5, 10, 15]"
                         (page)="onChangePagination($event)">
                     </mat-paginator>
                 </div>
